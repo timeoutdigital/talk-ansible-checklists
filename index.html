@@ -1,0 +1,242 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+        <title>Ansible Checklists</title>
+
+        <link rel="stylesheet" href="css/reveal.css">
+        <link rel="stylesheet" href="css/theme/black.css">
+
+        <!-- Theme used for syntax highlighting of code -->
+        <link rel="stylesheet" href="lib/css/zenburn.css">
+
+        <!-- Printing and PDF exports -->
+        <script>
+            var link = document.createElement( 'link' );
+            link.rel = 'stylesheet';
+            link.type = 'text/css';
+            link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+            document.getElementsByTagName( 'head' )[0].appendChild( link );
+        </script>
+    </head>
+    <body>
+        <div class="reveal">
+            <div class="slides">
+
+<section>
+    <h1>Ansible Checklists</h1>
+    <h2>Jonathan Burman & Adam Johnson</h2>
+    <h2>12 Oct 2017</h2>
+</section>
+
+
+<section>
+    <h2>What is a Checklist?</h2>
+    <blockquote>
+        <p>A type of informational job aid used to reduce failure by compensating for potential limits of human memory and attention. It helps to ensure consistency and completeness in carrying out a task.</p>
+        <p>Wikipedia</p>
+    </blockquote>
+</section>
+
+<section>
+    <h2>Talk</h2>
+    <ul>
+        <li>✅ What is a Checklist?</li>
+        <li>⏺ Use cases</li>
+        <li>⏺ Advantages</li>
+        <li>⏺ Techniques</li>
+        <li>⏺ Conclusion</li>
+    </ul>
+</section>
+
+<section>
+    <h2>Use cases</h2>
+    <h3>Pre-flight checklists</h3>
+    <img src="img/KC-135_Stratotanker_Cockpit.JPG" alt="">
+</section>
+
+<section>
+    <h2>Use cases</h2>
+    <h3>Adam's first checklist</h3>
+    <img src="img/the-master-shopping-list.png" alt="">
+</section>
+
+<section>
+    <h2>Use cases</h2>
+    <h3>Open source contributions</h3>
+    <img src="img/contributing-your-module-to-ansible.png" alt="">
+    <p><a href="https://docs.ansible.com/ansible/latest/dev_guide/developing_modules_checklist.html">on docs.ansible.com</a></p>
+</section>
+
+<section>
+    <h2>Talk</h2>
+    <ul>
+        <li>✅ What is a Checklist?</li>
+        <li>✅ Use cases</li>
+        <li>⏺ Advantages</li>
+        <li>⏺ Techniques</li>
+        <li>⏺ Conclusion</li>
+    </ul>
+</section>
+
+<section>
+    <h2>Advantages</h2>
+    <ul>
+        <li>Reduce human error</li>
+        <li>Planning first</li>
+        <li>Reusable, improved each iteration</li>
+        <li>Knowledge sharing</li>
+        <li>3am Pager Duty</li>
+    </ul>
+</section>
+
+<section>
+    <h2>Talk</h2>
+    <ul>
+        <li>✅ What is a Checklist?</li>
+        <li>✅ Use cases</li>
+        <li>✅ Advantages</li>
+        <li>⏺ Techniques</li>
+        <li>⏺ Conclusion</li>
+    </ul>
+</section>
+
+<section>
+    <h2>Techniques</h2>
+    <h3>Ansible Playbooks are checklists</h3>
+    <p><pre>
+- name: apt package
+  apt:
+    pkg: nginx
+
+- name: conf file
+  template:
+    src: etc_nginx_nginx.conf.j2
+    dest: /etc/nginx/nginx.conf
+    mode: 0644
+    owner: root
+    group: root
+
+- name: 50x.html
+  copy:
+    src: 50x.html
+    dest: /usr/share/nginx/html/timeout-50x.html
+</pre></p>
+</section>
+
+<section>
+    <h2>Techniques</h2>
+    <h3>Ansible Playbooks are checklists</h3>
+    <ul>
+        <li>If Ansible stopped working, you could manually execute your playbooks</li>
+        <li>Ordered, unlike some other configuration management systems</li>
+    </ul>
+</section>
+
+<section>
+    <h2>Techniques</h2>
+    <h3>Ansible Playbooks can be manual checklists</h3>
+    <p><pre>
+- pause:
+    prompt: Log into the widgets dashboard
+
+- pause:
+    prompt: Click 'foobar' and wait until it completes
+</pre></p>
+</section>
+
+<section>
+    <h2>Techniques</h2>
+    <h3>Ansible Playbooks can be manual checklists</h3>
+    <ul>
+        <li>When a system ain't worth automating <img src="img/is_it_worth_the_time.png" alt=""></li>
+        <li>Mix automated and manual steps in one process</li>
+    </ul>
+</section>
+
+<section>
+    <h2>Techniques</h2>
+    <h3>JIRA Tickets</h3>
+    <p><pre>
+Widgets:
+
+* (/) Foo
+* (x) Bar
+* (x) Baz</pre></p>
+    <img src="img/jira-checklist.png" alt="">
+</section>
+
+<section>
+    <h2>Techniques</h2>
+    <h3>GitHub Issues and PR's</h3>
+    <p><pre>
+Widgets:
+
+* [x] Foo
+* [ ] Bar
+* [ ] Baz</pre></p>
+    <img src="img/github-checklist.png" alt="">
+</section>
+
+<section>
+    <h2>Talk</h2>
+    <ul>
+        <li>✅ What is a Checklist?</li>
+        <li>✅ Use cases</li>
+        <li>✅ Advantages</li>
+        <li>✅ Techniques</li>
+        <li>⏺ Conclusion</li>
+    </ul>
+</section>
+
+
+
+<section>
+    <h2>Conclusion</h2>
+    <blockquote>
+        <p>“Not every situation can be foreseen or anticipated. There isn’t a checklist for everything.”</p>
+        <p>Chesley B. Sullenberger, Sully: My Search for What Really Matters</p>
+    </blockquote>
+    <p class="fragment"><code>ansible web -m ping</code></p>
+</section>
+
+<section>
+    <h2>Talk</h2>
+    <ul>
+        <li>✅ What is a Checklist?</li>
+        <li>✅ Use cases</li>
+        <li>✅ Advantages</li>
+        <li>✅ Techniques</li>
+        <li>✅ Conclusion</li>
+    </ul>
+</section>
+
+<section>
+    <h2>Thank you!</h2>
+    <ul>
+        <li>Questions?</li>
+        <li>Time Out is <strong>Hiring<em>!!</em></strong></li>
+        <li>Slides: <a href="https://github.com/timeoutdigital/talk-ansible-checklists">github.com/timeoutdigital/talk-ansible-checklists</a></p>
+    </ul>
+</section>
+
+
+            </div>
+        </div>
+
+        <script src="lib/js/head.min.js"></script>
+        <script src="js/reveal.js"></script>
+
+        <script>
+            // More info https://github.com/hakimel/reveal.js#configuration
+            Reveal.initialize({
+                history: true,
+                dependencies: [
+                    { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+                ]
+            });
+        </script>
+    </body>
+</html>
